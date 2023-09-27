@@ -33,79 +33,75 @@
 
                                 <h1 class="title">Adicionar Corrida</h1>
                                 <hr>
-                                <div id="add-corrida" class="columns is-multiline is-centered is-vcentered">
-                                    <div class="column is-12-touch">
 
-                                        <div class="field">
-                                            <label class="label" for="distancia">Data:</label>
-                                            <div class="control">
+                                <form onsubmit="return salvarCorrida()">
+                                    <div id="add-corrida" class="columns is-multiline is-centered is-vcentered">
+                                        <div class="column is-12-touch">
 
-                                                <input class="input" type="date" id="input-data">
+                                            <div class="field">
+                                                <label class="label" for="distancia">Data:</label>
+                                                <div class="control">
+
+                                                    <input class="input" required type="date" id="input-data">
+
+                                                </div>
 
                                             </div>
 
                                         </div>
+                                        <div class="column  is-12-touch">
 
-                                    </div>
-                                    <div class="column  is-12-touch">
-
-                                        <label class="label">Distância:</label>
-                                        <div class="field has-addons is-fullwidth">
-                                            <div class="control is-expanded">
-                                                <input class="input" type="number" placeholder="Distância">
-                                            </div>
-                                            <div class="control">
-                                                <a class="button is-static" id="minutos"> KM</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="column is-12-touch">
-
-                                        <label class="label">Tempo de Corrida:</label>
-                                        <div class="field has-addons">
-                                            <div class="control is-expanded">
-                                                <input class="input tempo" min="0" type="number" placeholder="Hr"
-                                                    id="horas">
-                                            </div>
-                                            <div class="control is-expanded">
-                                                <input class="input tempo" min="0" type="number" placeholder="Min"
-                                                    id="minutos">
-                                            </div>
-                                            <div class="control is-expanded">
-                                                <input class="input tempo" min="0" type="number" placeholder="Seg"
-                                                    id="minutos">
+                                            <label class="label">Distância:</label>
+                                            <div class="field has-addons is-fullwidth">
+                                                <div class="control is-expanded">
+                                                    <input class="input"  required step=".01" type="number" id="input2-distancia" placeholder="Distância">
+                                                </div>
+                                                <div class="control">
+                                                    <a class="button is-static">KM</a>
+                                                </div>
                                             </div>
                                         </div>
 
-                                    </div>
-                                    <div class="column is-12-touch">
 
-                                        <label class="label">Ganho de Elevação:</label>
-                                        <div class="field has-addons">
-                                            <div class="control is-expanded">
-                                                <input class="input" type="number" placeholder="Ganho">
+                                        <div class="column is-12-touch">
+
+                                            <label class="label">Tempo de Corrida:</label>
+                                            <div class="field has-addons">
+                                                <div class="control is-expanded">
+                                                    <input class="input tempo" required min="0" type="number" placeholder="Hr"
+                                                        id="horas">
+                                                </div>
+                                                <div class="control is-expanded">
+                                                    <input class="input tempo" required min="0" type="number" placeholder="Min"
+                                                        id="minutos">
+                                                </div>
+                                                <div class="control is-expanded">
+                                                    <input class="input tempo" required min="0" type="number" placeholder="Seg"
+                                                        id="segundos">
+                                                </div>
                                             </div>
-                                            <div class="control">
-                                                <a class="button is-static" id="minutos">Metros</a>
+
+                                        </div>
+                                        <div class="column is-12-touch">
+
+                                            <label class="label">Ganho de Elevação:</label>
+                                            <div class="field has-addons">
+                                                <div class="control is-expanded">
+                                                    <input class="input" type="number" required id="input-ganho" placeholder="Ganho">
+                                                </div>
+                                                <div class="control">
+                                                    <a class="button is-static">Metros</a>
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="column is-12 pb-1">
+
+                                            <button class=" button is-success is-fullwidth">Adicionar Corrida</button>
+
+                                        </div>
                                     </div>
-                                    <div class="column is-12 pb-1">
-
-                                        <button class=" button is-success is-fullwidth">Adicionar Corrida</button>
-
-                                    </div>
-                                    <!-- <div class="column is-12 pt-1">
-
-                                <button class=" button is-danger is-fullwidth">Limpar Filtros</button>
-
-
-
-                            </div> -->
-
-                                </div>
+                                </form>
+                               
 
                             </div>
                         </div>
@@ -171,7 +167,7 @@
                                 <hr>
 
                                 <div class="table-container">
-                                    <table class="table is-fullwidth is-striped is-narrow-mobile">
+                                    <table class="table is-fullwidth is-striped is-narrow-mobile" id="tabela">
 
                                         <thead>
 
@@ -183,37 +179,8 @@
 
                                         </thead>
 
-                                        <tbody>
-                                            <tr>
-                                                <td>2023-09-01</td>
-                                                <td>10 km</td>
-                                                <td>1 hora</td>
-                                                <td>100 metros</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2023-09-02</td>
-                                                <td>8 km</td>
-                                                <td>45 minutos</td>
-                                                <td>80 metros</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2023-09-03</td>
-                                                <td>12 km</td>
-                                                <td>1 hora e 15 minutos</td>
-                                                <td>120 metros</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2023-09-04</td>
-                                                <td>15 km</td>
-                                                <td>1 hora e 30 minutos</td>
-                                                <td>150 metros</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2023-09-05</td>
-                                                <td>9 km</td>
-                                                <td>50 minutos</td>
-                                                <td>90 metros</td>
-                                            </tr>
+                                        <tbody id="corpo">
+                                            
 
                                         </tbody>
 
@@ -303,6 +270,9 @@
             </div>
         </div>
     </section>
+
+
+    <script src="script.js"></script>
 
 </body>
 
