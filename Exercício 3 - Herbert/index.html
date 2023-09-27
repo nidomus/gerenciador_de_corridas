@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="has-background-grey-darker">
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de corrida</title>
+
+    <style>
+        #input-distancia {
+            width: 8rem;
+        }
+    </style>
+
+
+</head>
+
+
+<body>
+
+    <section class="section">
+        <div class="container ">
+            <div class="columns is-multiline">
+                <div class="column is-10-desktop is-12-touch">
+                    <div class="columns is-multiline">
+
+                        <div class="column is-12">
+
+                            <div class="box">
+
+                                <h1 class="title">Adicionar Corrida</h1>
+                                <hr>
+                                <div id="add-corrida" class="columns is-multiline is-centered is-vcentered">
+                                    <div class="column is-12-touch">
+
+                                        <div class="field">
+                                            <label class="label" for="distancia">Data:</label>
+                                            <div class="control">
+
+                                                <input class="input" type="date" id="input-data">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="column  is-12-touch">
+
+                                        <label class="label">Distância:</label>
+                                        <div class="field has-addons is-fullwidth">
+                                            <div class="control is-expanded">
+                                                <input class="input" type="number" placeholder="Distância">
+                                            </div>
+                                            <div class="control">
+                                                <a class="button is-static" id="minutos"> KM</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="column is-12-touch">
+
+                                        <label class="label">Tempo de Corrida:</label>
+                                        <div class="field has-addons">
+                                            <div class="control is-expanded">
+                                                <input class="input tempo" min="0" type="number" placeholder="Hr"
+                                                    id="horas">
+                                            </div>
+                                            <div class="control is-expanded">
+                                                <input class="input tempo" min="0" type="number" placeholder="Min"
+                                                    id="minutos">
+                                            </div>
+                                            <div class="control is-expanded">
+                                                <input class="input tempo" min="0" type="number" placeholder="Seg"
+                                                    id="minutos">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="column is-12-touch">
+
+                                        <label class="label">Ganho de Elevação:</label>
+                                        <div class="field has-addons">
+                                            <div class="control is-expanded">
+                                                <input class="input" type="number" placeholder="Ganho">
+                                            </div>
+                                            <div class="control">
+                                                <a class="button is-static" id="minutos">Metros</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column is-12 pb-1">
+
+                                        <button class=" button is-success is-fullwidth">Adicionar Corrida</button>
+
+                                    </div>
+                                    <!-- <div class="column is-12 pt-1">
+
+                                <button class=" button is-danger is-fullwidth">Limpar Filtros</button>
+
+
+
+                            </div> -->
+
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="column is-12 pt-2">
+                            <div class="box">
+
+                                <div class="columns is-multiline is-vcentered">
+                                    <div class="column is-6-desktop is-12-touch is-narrow has-text-left">
+                                        <h1 class="title">Corridas</h1>
+                                    </div>
+
+
+
+                                    <div class="column is-narrow is-12-touch">
+
+                                        <span class="is-size-5">Filtros Rápidos:</span>
+
+                                    </div>
+
+                                    <div class="column is-narrow">
+                                        <div class="select">
+
+                                            <select name="" id="">
+
+                                                <option value="01" selected>Janeiro</option>
+                                                <option value="02">Fevereiro</option>
+                                                <option value="03">Março</option>
+                                                <option value="04">Abril</option>
+                                                <option value="05">Maio</option>
+                                                <option value="06">Junho</option>
+                                                <option value="07">Julho</option>
+                                                <option value="08">Agosto</option>
+                                                <option value="09" selected>Setembro</option>
+                                                <option value="10">Outubro</option>
+                                                <option value="11">Novembro</option>
+                                                <option value="12">Dezembro</option>
+
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="column is-narrow">
+                                        <div class="field has-addons">
+
+                                            <p class="control">
+
+                                                <input class="input" id="input-distancia" min="0"
+                                                    placeholder="Distância" type="number" id="distancia">
+
+                                            </p>
+                                            <p class="control">
+                                                <a class="button is-static">KM</a>
+                                            </p>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <hr>
+
+                                <div class="table-container">
+                                    <table class="table is-fullwidth is-striped is-narrow-mobile">
+
+                                        <thead>
+
+                                            <th>Data</th>
+                                            <th>Distância</th>
+                                            <th>Tempo</th>
+                                            <th>Ganho de elevação</th>
+
+
+                                        </thead>
+
+                                        <tbody>
+                                            <tr>
+                                                <td>2023-09-01</td>
+                                                <td>10 km</td>
+                                                <td>1 hora</td>
+                                                <td>100 metros</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2023-09-02</td>
+                                                <td>8 km</td>
+                                                <td>45 minutos</td>
+                                                <td>80 metros</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2023-09-03</td>
+                                                <td>12 km</td>
+                                                <td>1 hora e 15 minutos</td>
+                                                <td>120 metros</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2023-09-04</td>
+                                                <td>15 km</td>
+                                                <td>1 hora e 30 minutos</td>
+                                                <td>150 metros</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2023-09-05</td>
+                                                <td>9 km</td>
+                                                <td>50 minutos</td>
+                                                <td>90 metros</td>
+                                            </tr>
+
+                                        </tbody>
+
+                                    </table>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="column is-12 pt-2">
+
+                            <div class="box">
+                                <div class="level">
+                                    <div class="level-left">
+                                        <h1 class="title">Estatísticas Mensais</h1>
+                                    </div>
+                                    <div class="level-right">
+                                        <div class="field">
+                                            <div class="control">
+                                                <div class="select">
+
+                                                    <select name="" id="">
+
+                                                        <option value="01" selected>Janeiro</option>
+                                                        <option value="02">Fevereiro</option>
+                                                        <option value="03">Março</option>
+                                                        <option value="04">Abril</option>
+                                                        <option value="05">Maio</option>
+                                                        <option value="06">Junho</option>
+                                                        <option value="07">Julho</option>
+                                                        <option value="08">Agosto</option>
+                                                        <option value="09" selected>Setembro</option>
+                                                        <option value="10">Outubro</option>
+                                                        <option value="11">Novembro</option>
+                                                        <option value="12">Dezembro</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <p class="pb-1">
+                                    <span class="is-size-4 pr-2"><strong>Distância total:</strong></span>
+                                    <span class="is-size-4 has-text-danger">54 km</span>
+                                </p>
+
+                                <p class="pb-1">
+                                    <span class="is-size-4 pr-2"><strong>Tempo total:</strong></span>
+                                    <span class="is-size-4 has-text-warning-dark">5 horas e 20 minutos</span>
+                                </p>
+                                <p class="pb-1">
+                                    <span class="is-size-4 pr-2"><strong>Total de dias:</strong></span>
+                                    <span class="is-size-4 has-text-info">5 dias</span>
+                                </p>
+                                <p class="pb-1">
+                                    <span class="is-size-4 pr-2"><strong>Média de KM por corrida:</strong></span>
+                                    <span class="is-size-4">10,8 km</span>
+                                </p>
+                                <p class="pb-1">
+                                    <span class="is-size-4 pr-2"><strong>Corrida mais longa:</strong></span>
+                                    <span class="is-size-4 has-text-success-dark">15 km -> 1 hora e 30 minutos</span>
+                                </p>
+                                <p class="pb-1">
+                                    <span class="is-size-4 pr-2"><strong>Maior velocidade:</strong></span>
+                                    <span class="is-size-4">~10,85 km/h</span>
+                                </p>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="column is-2 has-text-centered">
+
+                    <img class="propaganda" src="anuncie-aqui.gif" alt="">
+                    <img class="propaganda" src="BANNER-LATERAL-01.gif" alt="">
+                    <img class="propaganda" src="banner-PM-300x600-job-fair-prague-visitors.gif" alt="">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
