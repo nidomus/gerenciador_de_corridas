@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="has-background-grey-darker">
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css" />
+</head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gerenciador de corrida</title>
+
+<style>
+    @import 'style.css';
+
+    #input-distancia {
+        width: 8rem;
+    }
+</style>
+
+
+</head>
+
+<body>
+
+    <section class="section p-0">
+
+        <div class="columns">
+            <div class="column is-narrow">
+
+
+                <aside class="menu mt-4 ml-4">
+                    <h1 class="title has-text-centered" id="titulo-menu">IFRunner</h1>
+                    <HR />
+
+                    <p class="menu-label">
+                        Geral
+                    </p>
+                    <ul class="menu-list">
+                        <li><a href="index.html"><span class="option"><span
+                                        class="mdi mdi-chart-line icon"></span><strong>
+                                        Dashboard</span></strong></a></li>
+
+                        <li><a href="addCorrida.html"><span class="option"><span
+                                        class="mdi mdi-run icon"></span><strong>
+                                        Adicionar Corrida</span></strong></a></li>
+
+                        <li><a href="minhasCorridas.html"><span class="option"><span
+                                        class="mdi mdi-clipboard-list-outline icon"></span><strong>
+                                        Minhas Corridas</span></strong></a></li>
+
+
+
+                    </ul>
+
+
+                </aside>
+            </div>
+
+
+
+
+
+            <div class="column pb-0">
+
+                <div class="columns is-multiline p-4">
+
+                    <div class="column is-10">
+
+                        <div class="box">
+
+                            <h1 class="title">Adicionar Corridas</h1>
+                            <hr>
+
+                            <form onsubmit="return salvarCorrida()">
+                                <div id="add-corrida" class="columns is-multiline is-centered is-vcentered">
+                                    <div class="column is-12-touch">
+
+                                        <div class="field">
+                                            <label class="label" for="distancia">Data:</label>
+                                            <div class="control">
+
+                                                <input class="input" required type="date" id="input-data">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="column  is-12-touch">
+
+                                        <label class="label">Distância:</label>
+                                        <div class="field has-addons is-fullwidth">
+                                            <div class="control is-expanded">
+                                                <input class="input" required step=".01" type="number"
+                                                    id="input2-distancia" placeholder="Distância">
+                                            </div>
+                                            <div class="control">
+                                                <a class="button is-static">KM</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="column is-12-touch">
+
+                                        <label class="label">Tempo de Corrida:</label>
+                                        <div class="field has-addons">
+                                            <div class="control is-expanded">
+                                                <input class="input tempo" required min="0" type="number"
+                                                    placeholder="Hr" id="horas">
+                                            </div>
+                                            <div class="control is-expanded">
+                                                <input class="input tempo" required min="0" type="number"
+                                                    placeholder="Min" id="minutos">
+                                            </div>
+                                            <div class="control is-expanded">
+                                                <input class="input tempo" required min="0" type="number"
+                                                    placeholder="Seg" id="segundos">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="column is-12-touch">
+
+                                        <label class="label">Ganho de Elevação:</label>
+                                        <div class="field has-addons">
+                                            <div class="control is-expanded">
+                                                <input class="input" type="number" required id="input-ganho"
+                                                    placeholder="Ganho">
+                                            </div>
+                                            <div class="control">
+                                                <a class="button is-static">Metros</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column is-12 pb-1">
+
+                                        <button class=" button is-success is-fullwidth">Adicionar
+                                            Corrida</button>
+
+                                    </div>
+                                </div>
+                            </form>
+
+
+                        </div>
+                    </div>
+
+                    <div class="column is-2 has-text-centered">
+
+                        <img class="propaganda" src="anuncie-aqui.gif" alt="">
+                        <!-- <img class="propaganda" src="BANNER-LATERAL-01.gif" alt=""> -->
+                        <img class="propaganda" src="banner-PM-300x600-job-fair-prague-visitors.gif" alt="">
+
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <script src="addCorrida.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="has-background-grey-darker">
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css" />
+</head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gerenciador de corrida</title>
+
+<style>
+    @import 'style.css';
+
+    #input-distancia {
+        width: 8rem;
+    }
+</style>
+
+
+</head>
+
+<body>
+
+    <section class="section p-0">
+
+        <div class="columns">
+            <div class="column is-narrow">
+
+
+                <aside class="menu mt-4 ml-4">
+                    <h1 class="title has-text-centered" id="titulo-menu">IFRunner</h1>
+                    <HR />
+
+                    <p class="menu-label">
+                        Geral
+                    </p>
+                    <ul class="menu-list">
+                        <li><a href="index.html"><span class="option"><span
+                                        class="mdi mdi-chart-line icon"></span><strong>
+                                        Dashboard</span></strong></a></li>
+
+                        <li><a href="addCorrida.html"><span class="option"><span
+                                        class="mdi mdi-run icon"></span><strong>
+                                        Adicionar Corrida</span></strong></a></li>
+
+                        <li><a href="minhasCorridas.html"><span class="option"><span
+                                        class="mdi mdi-clipboard-list-outline icon"></span><strong>
+                                        Minhas Corridas</span></strong></a></li>
+
+
+
+                    </ul>
+
+
+                </aside>
+            </div>
+
+
+
+
+
+            <div class="column">
+
+                <div class="columns is-multiline p-4">
+
+                    <div class="column is-10">
+                        <div class="box">
+
+                            <div class="columns is-multiline is-vcentered">
+                                <div class="column is-5-desktop has-text-left">
+                                    <h1 class="title">Minhas corridas</h1>
+                                </div>
+
+
+                                <!-- 
+                                <div class="column is-narrow is-12-touch">
+
+                                    <span class="is-size-5">Filtros Rápidos:</span>
+
+                                </div> -->
+
+                                <div class="column is-narrow mr-0">
+                                    <div class="field has-addons">
+
+                                        <div class="control">
+                                            <button class="button is-static">
+                                                Mês
+                                            </button>
+                                        </div>
+
+                                        <div class="control">
+                                            <div class="select">
+
+                                                <select name="" onchange="adicionaFiltro()" id="filtro-mes">
+
+                                                    <option value='-1' selected>Todos</option>
+                                                    <option value="01">Janeiro</option>
+                                                    <option value="02">Fevereiro</option>
+                                                    <option value="03">Março</option>
+                                                    <option value="04">Abril</option>
+                                                    <option value="05">Maio</option>
+                                                    <option value="06">Junho</option>
+                                                    <option value="07">Julho</option>
+                                                    <option value="08">Agosto</option>
+                                                    <option value="09">Setembro</option>
+                                                    <option value="10">Outubro</option>
+                                                    <option value="11">Novembro</option>
+                                                    <option value="12">Dezembro</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="column is-narrow">
+                                    <div class="field has-addons">
+
+                                        <p class="control is-hidden-touch">
+                                            <a class="button is-static">Distância é</a>
+                                        </p>
+                                        <div class="control">
+                                            <div class="select">
+
+                                                <select name="" onchange="adicionaFiltro()" id="filtro-operador">
+
+                                                    <option value='===' selected>igual a</option>
+                                                    <option value="&lt;">menor que</option>
+                                                    <option value=">">maior que</option>
+
+
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <p class="control">
+
+                                            <input class="input" id="filtro-distancia" onblur="adicionaFiltro()" min="0"
+                                                step="0.01" placeholder="0" type="number">
+
+                                        </p>
+
+                                        <p class="control">
+                                            <a class="button is-static">KM</a>
+                                        </p>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <hr>
+
+                            <p class="subtilte" id="mensagem">Não há corridas registradas</p>
+
+                            <div class="table-container" id="tabela">
+                                <table class="table is-fullwidth is-striped is-narrow-mobile">
+
+                                    <thead>
+
+                                        <th>Data</th>
+                                        <th>Distância</th>
+                                        <th>Tempo</th>
+                                        <th>Ganho de elevação</th>
+                                        <th></th>
+
+
+                                    </thead>
+
+                                    <tbody id="corpo">
+
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+                    <div class="column is-2 has-text-centered">
+
+                        <img class="propaganda" src="anuncie-aqui.gif" alt="">
+                        <!-- <img class="propaganda" src="BANNER-LATERAL-01.gif" alt=""> -->
+                        <img class="propaganda" src="banner-PM-300x600-job-fair-prague-visitors.gif" alt="">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <script src="minhasCorridas.js"></script>
+
+</body>
+
+</html>

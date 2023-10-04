@@ -1,0 +1,39 @@
+aside {
+
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: black 3px;
+
+}
+
+#filtro-distancia {
+    width: 100px;
+}
+
+#titulo-menu {
+    color: #84bd00 !important;
+}
+
+.menu-label {
+    color: #da221c;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.info-text {
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.info-box {
+    background-color: white;
+    position: relative;
+    border-radius: 50%;
+    width: 10rem;
+    height: 10rem;
+    border: #84bd00 4px solid;
+}
