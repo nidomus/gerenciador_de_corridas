@@ -13,6 +13,7 @@ aside {
 
 #titulo-menu {
     color: #84bd00 !important;
+    font-weight: bold;
 }
 
 .menu-label {
@@ -27,13 +28,90 @@ aside {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
 }
 
-.info-box {
-    background-color: white;
+
+
+
+.rotate {
+    transform: rotateY(360deg);
+}
+
+.info-inner {
     position: relative;
-    border-radius: 50%;
-    width: 10rem;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+
+    transform-style: preserve-3d;
+}
+
+
+.info {
+
+    perspective: 1000px;
     height: 10rem;
-    border: #84bd00 4px solid;
+    transition: transform 0.8s;
+    backface-visibility: hidden;
+
+
+}
+
+.info:hover .info-inner {
+    transform: rotateX(180deg);
+}
+
+.info-front {
+    background-color: white;
+    border-radius: 20px;
+    border: rgb(132, 189, 0) 2px solid;
+    box-shadow: 0 0 5px 0 gray;
+}
+
+.info-back {
+    background-color: white !important;
+    transform: rotateX(180deg);
+    border-radius: 20px;
+    border: rgb(132, 189, 0) 2px solid;
+    box-shadow: 0 0 5px 0 gray;
+
+}
+
+.chart {
+    border: rgb(132, 189, 0) 2px solid;
+    box-shadow: 0 0 5px 0 gray;
+}
+
+.info-text-back {
+
+    position: absolute;
+    transform: rotateY(360deg);
+
+}
+
+.info-front,
+.info-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+
+#mensagem-dash {
+
+    position: absolute;
+    display: none;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+
+}
+
+
+#msg-corridas {
+
+    display: none;
 }

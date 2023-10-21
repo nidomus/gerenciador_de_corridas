@@ -6,6 +6,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css" />
 </head>
 
@@ -27,12 +28,12 @@
 
     <section class="section p-0">
 
-        <div class="columns">
-            <div class="column is-narrow">
+        <div class="columns is-multiline">
+            <div class="column is-narrow is-12-touch pr-0">
 
 
                 <aside class="menu mt-4 ml-4">
-                    <h1 class="title has-text-centered" id="titulo-menu">IFRunner</h1>
+                    <h1 class="title has-text-centered" id="titulo-menu">IFRUN</h1>
                     <HR />
 
                     <p class="menu-label">
@@ -62,133 +63,243 @@
 
                 <div class="columns is-multiline p-4">
 
-                    <div class="column is-10">
-
-                        <div class="box">
-                            <div class="level">
-                                <div class="level-left">
-                                    <h1 class="title">Dashboard</h1>
-                                </div>
-
-                                <div class="level-right">
-                                    <div class="field has-addons">
-
-                                        <div class="control">
-
-                                            <button class="button is-static">Mês de Consulta</button>
-
+                    <div class="column is-10 is-12-touch">
+                        <div class="columns is-multiline">
+                            <div class="column is-12">
+                                <div class="box">
+                                    <div class="level">
+                                        <div class="level-left">
+                                            <h1 class="title">Dashboard</h1>
                                         </div>
 
-                                        <div class="control">
-                                            <div class="select">
+                                        <div class="level-right">
+                                            <div class="field has-addons">
 
-                                                <select name="" id="">
+                                                <div class="control">
 
-                                                    <option value="01" selected>Janeiro</option>
-                                                    <option value="02">Fevereiro</option>
-                                                    <option value="03">Março</option>
-                                                    <option value="04">Abril</option>
-                                                    <option value="05">Maio</option>
-                                                    <option value="06">Junho</option>
-                                                    <option value="07">Julho</option>
-                                                    <option value="08">Agosto</option>
-                                                    <option value="09" selected>Setembro</option>
-                                                    <option value="10">Outubro</option>
-                                                    <option value="11">Novembro</option>
-                                                    <option value="12">Dezembro</option>
+                                                    <button class="button is-static">Mês de Consulta</button>
 
-                                                </select>
+                                                </div>
+
+                                                <div class="control">
+                                                    <div class="select" onchange="gerarDados()">
+
+                                                        <select name="" id="select-mes" id="">
+
+                                                            <option value="01" selected>Janeiro</option>
+                                                            <option value="02">Fevereiro</option>
+                                                            <option value="03">Março</option>
+                                                            <option value="04">Abril</option>
+                                                            <option value="05">Maio</option>
+                                                            <option value="06">Junho</option>
+                                                            <option value="07">Julho</option>
+                                                            <option value="08">Agosto</option>
+                                                            <option value="09">Setembro</option>
+                                                            <option value="10" selected>Outubro</option>
+                                                            <option value="11">Novembro</option>
+                                                            <option value="12">Dezembro</option>
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                </div>
+                            </div>
+                            <div class="column is-12" style="position: relative;">
+                                <div class="box pt-0" id="dash">
+                                    <div class="columns is-multiline is-centered p-6">
+                                        <div class="column" style="position: relative;">
+                                            <div class="info">
+                                                <div class="info-inner">
+                                                    <div class=" info-front">
+                                                        <div class="info-text">
+                                                            <p class=" title is-size-7 has-text-centered">
+                                                                Corridas
+                                                            </p>
+                                                            <p class="subtitle is-size-2 has-text-centered"
+                                                                id="info-corridas">-
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="info-back">
+                                                        <div class="info-text">
+                                                            <p class=" title is-size-7">
+                                                                Distância Total
+                                                            </p>
+                                                            <p class="subtitle is-size-2 has-text-centered"> <span
+                                                                    id="info-kmTotal">-</span>
+                                                                <span class=" title is-size-6">
+                                                                    km
+                                                                </span>
+                                                            </p>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="column is-12-touch">
+                                            <div class=" info">
+                                                <div class="info-inner">
+                                                    <div class="info-front">
+                                                        <div class="info-text">
+                                                            <p class=" title is-size-7">
+                                                                Maior Distância
+                                                            </p>
+                                                            <p class="subtitle is-size-2 has-text-centered"> <span
+                                                                    id="info-maiorKm">-</span>
+                                                                <span class=" title is-size-6">
+                                                                    km
+                                                                </span>
+                                                            </p>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="info-back">
+                                                        <div class="info-text">
+                                                            <p class=" title is-size-7 has-text-centered">
+                                                                Distância Média
+                                                            </p>
+                                                            <p class="subtitle is-size-2 has-text-centered"> <span
+                                                                    id="info-kmMedio">-</span>
+                                                                <span class=" title is-size-6">
+                                                                    km
+                                                                </span>
+                                                            </p>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="column is-12-touch">
+
+                                            <div class="info">
+                                                <div class="info-inner">
+                                                    <div class="info-front">
+                                                        <div class="info-text">
+                                                            <p class=" title is-size-7 has-text-centered">
+                                                                Tempo Total
+                                                            </p>
+                                                            <p class="subtitle is-size-3 has-text-centered"
+                                                                id="info-tempoTotal">0.0</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="info-back">
+                                                        <div class="info-text">
+                                                            <p class=" title is-size-7 has-text-centered">
+                                                                Corrida mais longa
+                                                            </p>
+                                                            <p class="subtitle is-size-3 pt-1 has-text-centered"
+                                                                id="info-maiorTempo">-
+                                                            </p>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </div>
 
+
+                                        <div class="column is-12-touch">
+
+                                            <div class="info">
+
+                                                <div class="info-inner">
+
+
+                                                    <div class="info-front">
+
+                                                        <div class="info-text">
+                                                            <p class="title is-size-7 has-text-centered">
+                                                                Corrida mais rápida
+                                                            </p>
+                                                            <p class="subtitle is-size-2 has-text-centered">
+                                                                <span id="info-maiorVelocidade">-</span>
+
+                                                                <span class="title is-size-6">
+                                                                    m/s
+                                                                </span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="info-back">
+                                                        <div class="info-text">
+                                                            <p class="title is-size-7 has-text-centered">
+                                                                Velocidade Média
+                                                            </p>
+                                                            <p class="subtitle is-size-2 has-text-centered">
+                                                                <span id="info-velocidadeMedia">-</span>
+
+                                                                <span class="title is-size-6">
+                                                                    m/s
+                                                                </span>
+                                                            </p>
+                                                        </div>
+
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="column is-12">
+                                            <hr>
+                                        </div>
+
+                                        <div class="column is-6 is-12-touch">
+                                            <div class="box chart">
+
+                                                <canvas id="myChart1"></canvas>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="column is-6 is-12-touch">
+
+                                            <div class="box chart">
+
+                                                <canvas id="myChart2"></canvas>
+
+                                            </div>
+
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="box" id="mensagem-dash">
+                                    <p class="title">
+                                        <i class="mdi mdi-alert pr-2"></i>
+
+                                        <span>Nenhuma corrida cadastrada nesse mês!</span>
+
+                                    </p>
+
+                                </div>
                             </div>
-                            <hr>
+
+
                         </div>
-                        <div class="box pt-0">
-                            <div class="columns is-multiline is-centered p-5">
-                                <div class="column has-text-centered is-12-mobile">
-                                    <div class="box info-box">
-                                        <div class="info-text">
-                                            <p class=" title is-size-7 has-text-centered">
-                                                Corridas
-                                            </p>
-                                            <p class="subtitle is-size-2 has-text-centered">-</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="column">
-                                    <div class="box info-box">
-                                        <div class="info-text">
-                                            <p class=" title is-size-7 has-text-centered">
-                                                KM Total
-                                            </p>
-                                            <p class="subtitle is-size-2 has-text-centered">-</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="column">
-                                    <div class="box info-box">
-                                        <div class="info-text">
-                                            <p class=" title is-size-7 has-text-centered">
-                                                Tempo Total
-                                            </p>
-                                            <p class="subtitle is-size-2 has-text-centered">-</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="column">
-                                    <div class="box info-box">
-                                        <div class="info-text">
-                                            <p class=" title is-size-7 has-text-centered">
-                                                KM Médio
-                                            </p>
-                                            <p class="subtitle is-size-2 has-text-centered">-</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="column">
-                                    <div class="box info-box">
-                                        <div class="info-text">
-                                            <p class=" title is-size-7 has-text-centered">
-                                                Maior Tempo
-                                            </p>
-                                            <p class="subtitle is-size-2 has-text-centered">-</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="column">
-                                    <div class="info-box">
-                                        <div class="info-text">
-                                            <p class="title is-size-7 has-text-centered">
-                                                Maior Veloc.
-                                            </p>
-                                            <p class="subtitle is-size-2 has-text-centered">-</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="column is-6">
-                                <div class="box">
-
-                                    <canvas id="myChart1"></canvas>
-
-                                </div>
-                            </div>
-
-                        </div>
-
                     </div>
 
-                    <div class="column is-2 has-text-centered">
 
-                        <img class="propaganda" src="anuncie-aqui.gif" alt="">
+                    <div class="column is-2 has-text-centered  is-hidden-touch">
+
+                        <img class="propaganda" src="assets/anuncie-aqui.gif" alt="">
                         <!-- <img class="propaganda" src="BANNER-LATERAL-01.gif" alt=""> -->
-                        <img class="propaganda" src="banner-PM-300x600-job-fair-prague-visitors.gif" alt="">
+                        <img class="propaganda" src="assets/banner-PM-300x600-job-fair-prague-visitors.gif" alt="">
 
                     </div>
+
+
                 </div>
             </div>
         </div>

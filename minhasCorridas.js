@@ -1,68 +1,92 @@
 
 localStorage.removeItem('corridasFiltradas')
-renderizarCorridas()
+
+let vetorCorridas = [];
+let corridasFiltradas = [];
+let filtro = false;
+
+consulta = new XMLHttpRequest();
+
+consulta.onload = function () {
+    // console.log(this.responseText);
+    vetorCorridas = JSON.parse(this.responseText);
+    // console.log(vetorCorridas)
+    renderizarCorridas()
+};
+
+consulta.open("GET", "get_corridas.php");
+
+consulta.send();
+
 
 
 function renderizarCorridas() {
 
-    let c = localStorage.getItem('corridas');
-
-    var cf = localStorage.getItem('corridasFiltradas')
-
-
-    console.log(cf)
     limparTabela()
 
-    if (c == null) {
+    if (vetorCorridas == null) {
         document.getElementById('tabela').style.display = 'none';
     } else {
         document.getElementById('mensagem').style.display = 'none';
         tabela = document.getElementById('corpo');
 
-        if (cf !== null) {
+        var corridas;
 
-            corridas = JSON.parse(cf);
+        console.log('filtro ->', filtro)
+        if (filtro === false) {
+
+            corridas = vetorCorridas
         }
         else {
-            corridas = JSON.parse(c)
+            console.log('aqui')
+            console.log(corridasFiltradas)
+            corridas = corridasFiltradas
+            console.log(corridas)
         }
 
-        corridas.forEach(function (run) {
-            console.log(run)
-            linha = document.createElement('tr');
-            linha.className = 'linha'
+        if (corridas.length === 0) {
+            document.getElementById('msg-corridas').style.display = 'block'
+        } else {
+            document.getElementById('msg-corridas').style.display = 'none'
 
-            tdData = document.createElement('td');
-            noData = document.createTextNode(run.data);
-            tdData.appendChild(noData);
 
-            tdDistancia = document.createElement('td');
-            noDistancia = document.createTextNode(run.distancia);
-            tdDistancia.appendChild(noDistancia);
+            corridas.forEach(function (run) {
+                // console.log(run)
+                linha = document.createElement('tr');
+                linha.className = 'linha'
 
-            tdTempo = document.createElement('td');
-            noTempo = document.createTextNode(run.tempo);
-            tdTempo.appendChild(noTempo);
+                tdData = document.createElement('td');
+                noData = document.createTextNode(new Date(run.data_corrida + "T00:00:00").toLocaleDateString('pt-BR'));
+                tdData.appendChild(noData);
 
-            tdGanho = document.createElement('td');
-            noGanho = document.createTextNode(run.ganho);
-            tdGanho.appendChild(noGanho);
+                tdDistancia = document.createElement('td');
+                noDistancia = document.createTextNode(run.distancia + " km");
+                tdDistancia.appendChild(noDistancia);
 
-            tdDelete = document.createElement('td');
-            btnDelete = document.createElement('button')
-            noDelete = document.createElement('span')
-            noDelete.className = "mdi mdi-trash-can icon"
-            btnDelete.appendChild(noDelete)
-            btnDelete.addEventListener('click', function () { alert('teste') })
-            tdDelete.appendChild(btnDelete)
+                tdTempo = document.createElement('td');
+                noTempo = document.createTextNode(run.tempo_corrida);
+                tdTempo.appendChild(noTempo);
 
-            linha.appendChild(tdData);
-            linha.appendChild(tdDistancia);
-            linha.appendChild(tdTempo);
-            linha.appendChild(tdGanho);
-            linha.appendChild(tdDelete);
-            tabela.appendChild(linha);
-        });
+                tdGanho = document.createElement('td');
+                noGanho = document.createTextNode(run.ganho_elevacao + " m");
+                tdGanho.appendChild(noGanho);
+
+                tdDelete = document.createElement('td');
+                btnDelete = document.createElement('button')
+                noDelete = document.createElement('span')
+                noDelete.className = "mdi mdi-trash-can icon"
+                btnDelete.appendChild(noDelete)
+                btnDelete.addEventListener('click', function () { alert('teste') })
+                tdDelete.appendChild(btnDelete)
+
+                linha.appendChild(tdData);
+                linha.appendChild(tdDistancia);
+                linha.appendChild(tdTempo);
+                linha.appendChild(tdGanho);
+                linha.appendChild(tdDelete);
+                tabela.appendChild(linha);
+            });
+        }
     }
 }
 
@@ -70,7 +94,7 @@ function limparTabela() {
 
     var linhas = document.querySelectorAll('.linha')
 
-    console.log(linhas)
+    // console.log(linhas)
 
     linhas.forEach(linha => {
 
@@ -82,11 +106,10 @@ function limparTabela() {
 
 function adicionaFiltro(event) {
 
-    var filtro = document.getElementById('filtro-mes')
+    var mes = document.getElementById('filtro-mes').value
     var operador = document.getElementById('filtro-operador').value
     var distancia = document.getElementById('filtro-distancia').value
 
-    var mes = filtro.value
 
     var operadores = {
 
@@ -95,34 +118,32 @@ function adicionaFiltro(event) {
         "===": function (a, b) { return a === b }
     }
 
-    console.log(Number('12.05') > Number('10'))
-
-    var corridas = localStorage.getItem("corridas")
-    corridas = JSON.parse(corridas)
-
-    console.log("Mês:", mes, "\nOperador:", operador, "\nDistância: ", distancia)
+    // console.log(Number('12.05') > Number('10'))
 
 
-    var corridasFiltradas = []
+
+    // console.log("Mês:", mes, "\nOperador:", operador, "\nDistância: ", distancia)
+
+    corridasFiltradas = []
 
     if (mes === '-1' && distancia === '') {
-        console.log('aqui')
-        localStorage.removeItem('corridasFiltradas')
+
+        filtro = false
 
     } else {
 
         if (distancia === '') {
 
-            corridas.forEach(corrida => {
+            vetorCorridas.forEach(corrida => {
 
-                if (corrida.data.split("-")[1] === mes) {
+                if (corrida.data_corrida.split("-")[1] === mes) {
                     corridasFiltradas[corridasFiltradas.length] = corrida
                 }
 
             })
         } else if (mes === '-1') {
 
-            corridas.forEach(corrida => {
+            vetorCorridas.forEach(corrida => {
                 console.log(corrida.distancia, " ", operador, " ", distancia, ' ', operadores[operador](corrida.distancia, distancia))
                 if (operadores[operador](corrida.distancia, distancia)) {
                     corridasFiltradas[corridasFiltradas.length] = corrida
@@ -131,8 +152,8 @@ function adicionaFiltro(event) {
             })
 
         } else {
-            corridas.forEach(corrida => {
-                if (operadores[operador](corrida.distancia, distancia) && corrida.data.split("-")[1] === mes) {
+            vetorCorridas.forEach(corrida => {
+                if (operadores[operador](corrida.distancia, distancia) && corrida.data_corrida.split("-")[1] === mes) {
                     corridasFiltradas[corridasFiltradas.length] = corrida
                 }
 
@@ -141,8 +162,8 @@ function adicionaFiltro(event) {
 
         }
 
-        localStorage.setItem('corridasFiltradas', JSON.stringify(corridasFiltradas))
 
+        filtro = true
     }
     renderizarCorridas()
 
