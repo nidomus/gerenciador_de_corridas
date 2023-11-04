@@ -74,15 +74,15 @@
                             <h1 class="title">Adicionar Corridas</h1>
                             <hr>
 
-                            <form onsubmit="return salvarCorrida()">
+                            <form onsubmit="return salvarCorrida(this)">
                                 <div id="add-corrida" class="columns is-multiline is-centered is-vcentered">
                                     <div class="column is-12-touch">
 
                                         <div class="field">
-                                            <label class="label" for="distancia">Data:</label>
+                                            <label class="label" for="input-data">Data:</label>
                                             <div class="control">
 
-                                                <input class="input" required type="date" id="input-data">
+                                                <input class="input" name="data" required type="date" id="input-data">
 
                                             </div>
 
@@ -94,7 +94,7 @@
                                         <label class="label">Distância:</label>
                                         <div class="field has-addons is-fullwidth">
                                             <div class="control is-expanded">
-                                                <input class="input" required step=".01" type="number"
+                                                <input class="input" name="distancia" required step=".01" type="number"
                                                     id="input2-distancia" placeholder="Distância">
                                             </div>
                                             <div class="control">
@@ -109,16 +109,16 @@
                                         <label class="label">Tempo de Corrida:</label>
                                         <div class="field has-addons">
                                             <div class="control is-expanded">
-                                                <input class="input tempo" required min="0" type="number"
+                                                <input class="input tempo" name="horas" required min="0" type="number"
                                                     placeholder="Hr" id="horas">
                                             </div>
                                             <div class="control is-expanded">
-                                                <input class="input tempo" required min="0" type="number"
+                                                <input class="input tempo" name="minutos" required min="0" type="number"
                                                     placeholder="Min" id="minutos">
                                             </div>
                                             <div class="control is-expanded">
-                                                <input class="input tempo" required min="0" type="number"
-                                                    placeholder="Seg" id="segundos">
+                                                <input class="input tempo" name="segundos" required min="0"
+                                                    type="number" placeholder="Seg" id="segundos">
                                             </div>
                                         </div>
 
@@ -128,7 +128,7 @@
                                         <label class="label">Ganho de Elevação:</label>
                                         <div class="field has-addons">
                                             <div class="control is-expanded">
-                                                <input class="input" type="number" required id="input-ganho"
+                                                <input class="input" type="number" name="ganhoElevacao" id="input-ganho"
                                                     placeholder="Ganho">
                                             </div>
                                             <div class="control">

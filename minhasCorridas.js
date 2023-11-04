@@ -5,20 +5,24 @@ let vetorCorridas = [];
 let corridasFiltradas = [];
 let filtro = false;
 
-consulta = new XMLHttpRequest();
+get_corridas()
 
-consulta.onload = function () {
-    // console.log(this.responseText);
-    vetorCorridas = JSON.parse(this.responseText);
-    // console.log(vetorCorridas)
-    renderizarCorridas()
-};
+function get_corridas() {
+    consulta = new XMLHttpRequest();
 
-consulta.open("GET", "get_corridas.php");
+    consulta.onload = function () {
+        // console.log(this.responseText);
+        vetorCorridas = JSON.parse(this.responseText);
+        // console.log(vetorCorridas)
+        adicionaFiltro()
+        renderizarCorridas()
+    };
 
-consulta.send();
+    consulta.open("GET", "get_corridas.php");
 
+    consulta.send();
 
+}
 
 function renderizarCorridas() {
 
@@ -76,7 +80,8 @@ function renderizarCorridas() {
                 noDelete = document.createElement('span')
                 noDelete.className = "mdi mdi-trash-can icon"
                 btnDelete.appendChild(noDelete)
-                btnDelete.addEventListener('click', function () { alert('teste') })
+                btnDelete.addEventListener('click', function a() { deletarCorrida(run.id) })
+                btnDelete.id = run.id
                 tdDelete.appendChild(btnDelete)
 
                 linha.appendChild(tdData);
@@ -87,6 +92,27 @@ function renderizarCorridas() {
                 tabela.appendChild(linha);
             });
         }
+    }
+}
+
+function deletarCorrida(id) {
+    console.log(id)
+
+    resposta = confirm('Deseja mesmo apagar essa corrida?')
+
+    if (resposta) {
+        xhttp = new XMLHttpRequest();
+        xhttp.onload = function () {
+            console.log(this.responseText);
+            get_corridas()
+            alert('Corrida apagada com sucesso!')
+        };
+        xhttp.open("POST", "deletar_corrida.php", true);
+        xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+
+        xhttp.send(new URLSearchParams({ 'id': id }).toString());
+
     }
 }
 
